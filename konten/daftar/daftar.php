@@ -81,11 +81,11 @@ if (isset($_POST['submit'])) {
                     </div>
                      <div class="form-group">
                         <label>Anak Ke </label>
-                        <input type="text" class="form-control" name="anak_ke" placeholder="Masukkan Anak Ke" required>
+                        <input type="text" class="form-control" name="anak_ke" placeholder="Masukkan Anak Ke">
                     </div>
                     <div class="form-group">
                         <label>Jumlah Saudara </label>
-                        <input type="text" class="form-control" name="jumlah_saudara" placeholder="Masukkan Jumlah Saudara" required>
+                        <input type="text" class="form-control" name="jumlah_saudara" placeholder="Masukkan Jumlah Saudara">
                     </div>
                      <div class="form-group">
                         <label>Alamat</label>
@@ -98,7 +98,7 @@ if (isset($_POST['submit'])) {
             <div class="col-md-4">
                <div class="form-group">
                         <label>No Telpon</label>
-                      <input type="text" class="form-control" name="no_telp" placeholder="Masukkan No Telpon" required>
+                      <input type="text" class="form-control" name="no_telp" placeholder="Masukkan No Telpon">
                     </div>
                     <div class="form-group">
                         <label>Tinggal Dengan</label>
@@ -107,7 +107,7 @@ if (isset($_POST['submit'])) {
                      <div class="form-group">
                         <label>Golongan Darah</label>
                         <select class="form-control select2" style="width: 100%;" name="goldar">
-                          <option selected="selected"> -- Golongan Darah --</option>
+                          <option value="-" selected="selected"> -- Golongan Darah --</option>
                           <option value="A">A</option>
                           <option value="B">B</option>
                           <option value="AB">AB</option>
@@ -173,7 +173,7 @@ if (isset($_POST['submit'])) {
                     </div>
                 <div class="form-group">
                         <label>Telpon Orang Tua</label>
-                        <input type="text" class="form-control" name="telpon_ortu" placeholder="Masukkan No Telpon Ortu" required>
+                        <input type="text" class="form-control" name="telpon_ortu" placeholder="Masukkan No Telpon Ortu">
                     </div>
                     
             </div>
