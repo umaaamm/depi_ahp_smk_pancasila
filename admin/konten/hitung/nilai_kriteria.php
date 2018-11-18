@@ -5,7 +5,9 @@ include 'functions.php';
 if (isset($_POST['cll'])) {
     $RI = array(0, 0, 0, 0.58, 0.9, 1.12, 1.24, 1.32, 1.41, 1.45, 1.49, 1.51, 1.48, 1.56, 1.57, 1.59);
     $mat_sementara = $_POST['cll'];
+
     $Nkri = count($mat_sementara);
+
     for ($i = 0; $i <= $Nkri; $i++)
         for ($j = 0; $j <= $Nkri; $j++)
             if ($i == $j)
@@ -57,7 +59,7 @@ if (isset($_POST['cll'])) {
     }
     $rata2_vektor_konsistensi = $total_vektor_konsistensi / $Nkri;
     $K = (($rata2_vektor_konsistensi - $Nkri) / ($Nkri - 1)) / $RI[$Nkri];
-
+    // print_r($K);die;
     if ($K < 0.1) {
 
         $mat_alternatif = array();
@@ -83,13 +85,13 @@ if (isset($_POST['cll'])) {
             foreach ($list_kd_pendaftaran as $k1 => $v1) {
                 foreach ($list_kd_pendaftaran as $k2 => $v2) {
                     $mat_alternatif[$i_kriteria][$k1][$k2] = $list_kriteria_alternatif[$i_kriteria][$v1] / $list_kriteria_alternatif[$i_kriteria][$v2];
-                    //print_r($mat_alternatif[$i_kriteria][$k1][$k2]);
+                    // print_r($mat_alternatif[$i_kriteria][$k1][$k2]);
                 }
             }
                
         }
         //print_r("<br>"+$mat_alternatif);die;
-       // die;
+        // die;
         // kwadratkan
         for ($i_kriteria = 1; $i_kriteria <= $Nkri; $i_kriteria++) {
             $mat_alternatif[$i_kriteria] = matmul($mat_alternatif[$i_kriteria], $mat_alternatif[$i_kriteria]);
@@ -100,8 +102,9 @@ if (isset($_POST['cll'])) {
         $total_kolom = array();
         for ($i_kriteria = 1; $i_kriteria <= $Nkri; $i_kriteria++) {
             $total_kolom[$i_kriteria] = total_kolom($mat_alternatif[$i_kriteria]);   
+           
         }
-
+   
         $eigen_alternatif = array();
         for ($i_kriteria = 1; $i_kriteria <= $Nkri; $i_kriteria++) {
             $total_semua_kolom = 0;
@@ -114,7 +117,9 @@ if (isset($_POST['cll'])) {
             }   
                
         }
-        //print_r($total_semua_kolom);die;
+        
+        //print_r($eigen_alternatif);die;
+      
         $hasil = array();
         
         // result
@@ -127,8 +132,7 @@ if (isset($_POST['cll'])) {
                 //print_r($eigen_alternatif[$k][$k2]+"<br>");
             }
         }
-//         print_r($hasil);
-// die;
+ 
         $map_kd_pendaftaran_hasil = array();
         foreach ($hasil as $k => $v) {
             $map_kd_pendaftaran_hasil[] = ['id_pendaftar' => $list_kd_pendaftaran[$k], 'score' => $v];
@@ -157,6 +161,7 @@ if (isset($_POST['cll'])) {
         $dataString = $K;
         $fWrite = fopen($dateFile, 'w');
         $wrote = fwrite($fWrite, $K);
+        // print_r($wrote);die;
         fclose($fWrite);
 
         echo '<script language="javascript">
